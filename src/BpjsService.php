@@ -177,15 +177,15 @@ class BpjsService{
     }
 
     protected function post($feature, $data=[], $headers=[]) {
-        return $this->_request('POST', $data, $headers);
+        return $this->_request('POST', $feature, $data, $headers);
     }
 
     protected function put($feature, $data=[]) {
-        return $this->_request('PUT', $data);
+        return $this->_request('PUT', $feature, $data);
     }
 
     protected function delete($feature, $data=[]) {
-        return $this->_request('DELETE', $data);
+        return $this->_request('DELETE', $feature, $data);
     }
 
 }
