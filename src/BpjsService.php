@@ -148,8 +148,9 @@ class BpjsService{
         } catch (\Exception $e) {
             $response = json_decode($e->getResponse()->getBody(), true);
         }
+
         if ($response['metaData']['code'] ?? '' == '200' and is_string($response['response']))
-            $response['response'] = $this->_decompress($response['response']);
+            $response['response'] = json_decode($this->_decompress($response['response']), true);
         return $response;
     }
 
