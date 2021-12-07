@@ -131,22 +131,28 @@ class BpjsService{
         } catch (\GuzzleHttp\Exception\RequestException $e) {
             if ($e->getCode() == 0) {
                 $handlerContext = $e->getHandlerContext();
-                $response = json_encode([
+                $response = [
                                 'metaData' => [
                                     'code' => $handlerContext['errno'],
                                     'message' => $handlerContext['error']
                                 ]
-                            ]);
+                            ];
             }
             else
-                $response = json_encode([
+                $response = [
                                 'metaData' => [
                                     'code' => $e->getCode(),
                                     'message' => $e->getMessage()
                                 ]
-                            ]);
+                            ];
         } catch (\Exception $e) {
-            $response = json_decode($e->getResponse()->getBody(), true);
+            error_log($e->getMessage());
+            $response = [
+                'metaData' => [
+                    'code' => '000',
+                    'message' => $e->getMessage()
+                ]
+            ];
         }
 
         if ($response['metaData']['code'] ?? '' == '200' and is_string($response['response']))
