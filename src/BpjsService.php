@@ -155,7 +155,7 @@ class BpjsService{
             ];
         }
 
-        if ($response['metaData']['code'] ?? '' == '200' and is_string($response['response']))
+        if ($response['metaData']['code'] ?? '' == '200' and !empty($response['response']) and is_string($response['response']))
             $response['response'] = json_decode($this->_decompress($response['response']), true);
         return $response;
     }
