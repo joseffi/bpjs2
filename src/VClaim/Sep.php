@@ -66,7 +66,7 @@ class Sep extends BpjsService
     }
 
     // $tanggal: yyyy-mm-dd
-    public function listFpByNoKartu($noKartu, $tanggal)
+    public function getFpByNoKartu($noKartu, $tanggal)
     {
         return $this->get('SEP/FingerPrint/Peserta/'.$noKartu.'/TglPelayanan/'.$tanggal);
     }
