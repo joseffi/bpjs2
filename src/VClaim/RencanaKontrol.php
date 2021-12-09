@@ -12,7 +12,7 @@ class RencanaKontrol extends BpjsService
 
     public function updateRencanaKontrol($data=[])
     {
-        return $this->put('RencanaKontrol/update', $data);
+        return $this->put('RencanaKontrol/Update', $data);
     }
 
     public function deleteRencanaKontrol($data=[])
