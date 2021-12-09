@@ -145,14 +145,6 @@ class BpjsService{
                                     'message' => $e->getMessage()
                                 ]
                             ];
-        } catch (\Exception $e) {
-            error_log($e->getMessage());
-            $response = [
-                'metaData' => [
-                    'code' => '000',
-                    'message' => $e->getMessage()
-                ]
-            ];
         }
 
         if ($response['metaData']['code'] ?? '' == '200' and !empty($response['response']) and is_string($response['response']))
