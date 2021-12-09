@@ -5,17 +5,17 @@ use Nsulistiyawan\Bpjs\BpjsService;
 
 class RencanaKontrol extends BpjsService
 {
-    public function insert($data=[])
+    public function insertRencanaKontrol($data=[])
     {
         return $this->post('RencanaKontrol/insert', $data);
     }
 
-    public function update($data=[])
+    public function updateRencanaKontrol($data=[])
     {
         return $this->put('RencanaKontrol/update', $data);
     }
 
-    public function delete($data=[])
+    public function deleteRencanaKontrol($data=[])
     {
         return $this->delete('RencanaKontrol/Delete', $data);
     }
