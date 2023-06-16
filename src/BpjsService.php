@@ -1,55 +1,26 @@
 <?php
-namespace Nsulistiyawan\Bpjs;
+namespace joseffi\Bpjs;
 
 use GuzzleHttp\Client;
 use LZCompressor\LZString;
 
 class BpjsService{
 
-    /**
-     * Guzzle HTTP Client object
-     * @var \GuzzleHttp\Client
-     */
+    // Guzzle HTTP Client object
     private $clients;
 
-    /**
-     * Request headers
-     * @var array
-     */
+    private $base_url;
     private $headers;
 
-    /**
-     * X-cons-id header value
-     * @var int
-     */
     private $cons_id;
-
-    /**
-     * X-Timestamp header value
-     * @var string
-     */
     private $timestamp;
-
-    /**
-     * X-Signature header value
-     * @var string
-     */
     private $signature;
-
-    /**
-     * @var string
-     */
+    private $authorization;
     private $secret_key;
-
-    /**
-     * @var string
-     */
     private $user_key;
-
-    /**
-     * @var string
-     */
-    private $base_url;
+    private $pcare_user;
+    private $pcare_pass;
+    private $kd_aplikasi = '095';
 
     /**
      * @var string
@@ -69,8 +40,8 @@ class BpjsService{
             }
         }
 
-        //set X-Timestamp, X-Signature, and finally the headers
-        $this->setTimestamp()->setSignature()->setHeaders();
+        //set X-Timestamp, X-Signature, X-Authorization if required, and finally the headers
+        $this->setTimestamp()->setSignature()->setAuthorization()->setHeaders();
     }
 
     protected function setHeaders()
@@ -81,6 +52,19 @@ class BpjsService{
             'X-Signature' => $this->signature,
             'user_key' => $this->user_key
         ];
+        
+        // Pcare
+        if (!empty($this->authorization))
+            $this->headers['X-Authorization'] = $this->authorization;
+        return $this;
+    }
+
+    protected function setAuthorization()
+    {
+        if (!empty($this->pcare_user) and !empty($this->pcare_pass) and !empty($this->kd_aplikasi)) {
+            $authorization = $this->pcare_user.":".$this->pcare_pass.":".$this->kd_aplikasi;
+            $this->authorization = 'Basic '.base64_encode($authorization);
+        }
         return $this;
     }
 
@@ -115,6 +99,9 @@ class BpjsService{
             $this->headers['Content-Type'] = 'application/x-www-form-urlencoded';
         if (!empty($headers))
             $this->headers = array_merge($this->headers, $headers);
+
+//debug
+error_log(json_encode($this->headers));
 
         $opts = ['headers' => $this->headers, 'timeout' => $this->timeout];
         if (!empty($data))

@@ -1,7 +1,7 @@
 <?php
-namespace Nsulistiyawan\Bpjs\Vclaim;
+namespace joseffi\Bpjs\Vclaim;
 
-use Nsulistiyawan\Bpjs\BpjsService;
+use Joseffi\Bpjs\BpjsService;
 
 class RencanaKontrol extends BpjsService
 {

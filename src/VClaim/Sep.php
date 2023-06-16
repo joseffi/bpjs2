@@ -1,6 +1,6 @@
 <?php
-namespace Nsulistiyawan\Bpjs\VClaim;
-use Nsulistiyawan\Bpjs\BpjsService;
+namespace joseffi\Bpjs\VClaim;
+use Joseffi\Bpjs\BpjsService;
 
 class Sep extends BpjsService
 {
