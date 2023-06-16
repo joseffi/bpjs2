@@ -20,6 +20,17 @@ $vclaim_conf = [
     'service_name' => 'vclaim-rest'
 ];
 
+// or Pcare config
+$pcare_conf = [
+    'cons_id'       => '123456',
+    'secret_key'    => 'abcdef',
+    'user_key'      => '6bbfb9e9b535cd9c32bd77451050c6a0',
+    'base_url'      => 'https://apijkn-dev.bpjs-kesehatan.go.id',
+    'service_name'  => 'pcare-rest-dev',
+    'pcare_user'    => 'mimin',
+    'pcare_pass'    => 'password',
+];
+
 // use Referensi service
 // https://dvlp.bpjs-kesehatan.go.id/VClaim-Katalog/Referensi
 
@@ -32,18 +43,4 @@ var_dump($referensi->diagnosa('A00'));
 $peserta = new joseffi\Bpjs\VClaim\Peserta($vclaim_conf);
 var_dump($peserta->getByNoKartu('123456789','2018-09-16'));
 ```
-
-
-#### Supported Services (WIP) :rocket:
-
-- [x] Referensi
-- [x] Peserta
-- [x] SEP
-- [x] Rujukan
-- [x] Lembar Pengajuan Klaim
-- [x] Monitoring
-- [x] Aplicare
-
-
-#### Contributions :ok_hand:
-Your contribution is always welcome!
+See /tests directory for more examples

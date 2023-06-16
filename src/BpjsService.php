@@ -100,9 +100,6 @@ class BpjsService{
         if (!empty($headers))
             $this->headers = array_merge($this->headers, $headers);
 
-//debug
-error_log(json_encode($this->headers));
-
         $opts = ['headers' => $this->headers, 'timeout' => $this->timeout];
         if (!empty($data))
             $opts['json'] = $data;
