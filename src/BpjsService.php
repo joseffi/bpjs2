@@ -35,7 +35,7 @@ class BpjsService{
         ]);
 
         foreach ($configurations as $key => $val){
-            if (property_exists($this, $key)) {
+            if (!empty($val) and property_exists($this, $key)) {
                 $this->$key = $val;
             }
         }
