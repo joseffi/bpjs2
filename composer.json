@@ -16,7 +16,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Joseffi\\Bpjs\\": "src/"
+            "joseffi\\Bpjs\\": "src/"
         }
     },
     "require": {
