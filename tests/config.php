@@ -16,3 +16,13 @@ $pcare_conf = [
     'pcare_user'    => 'mimin',
     'pcare_pass'    => 'password',
 ];
+
+$pcare_conf = [
+    'cons_id'       => '7168',
+    'secret_key'    => '5xA48638FD',
+    'user_key'      => 'a7582d46575ed19b5e7c954201d7d9fa',
+    'base_url'      => 'https://apijkn-dev.bpjs-kesehatan.go.id',
+    'service_name'  => 'pcare-rest-dev',
+    'pcare_user'    => 'yusuf-alex',
+    'pcare_pass'    => 'Banjarmasin123+',
+];

@@ -14,10 +14,9 @@ class Kunjungan extends BpjsService
 	}
 	
 	public function insertKunjungan ($data = []) {
-		return $this->postAsync('kunjungan', $data);
+		return $this->post('kunjungan', $data);
 	}
-	
-	public function updateKunjungan ($data = []) {
+		public function updateKunjungan ($data = []) {
 		return $this->put('kunjungan', $data);
 	}
 	
