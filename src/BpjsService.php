@@ -13,8 +13,6 @@ class BpjsService{
     private $db;                    // f3 ORM object
     private $async_url;             // url to kickstart async calls
     private $async_timeout = 60;    // seconds, consider async thread dead after this
-    
-    // not required, except for multitenant Bpjs_Sync
     private $site_id;
 
     private $base_url;
@@ -201,13 +199,14 @@ class BpjsService{
                                 ]
                             ];
             }
-            else
+            else {
                 $response = [
                                 'metaData' => [
                                     'code' => $e->getCode(),
-                                    'message' => $e->getMessage()
+                                    'message' => (string) $e->getResponse()->getBody()
                                 ]
                             ];
+            }
         }
 
         if ($response['metaData']['code'] ?? '' == 200 and !empty($response['response']) and is_string($response['response']))

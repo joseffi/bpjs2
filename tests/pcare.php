@@ -8,17 +8,18 @@ require_once 'config.php';
 $dok = new \joseffi\Bpjs\Pcare\Dokter($pcare_conf);
 $doklist = $dok->getDokter(0, 10);
 var_dump($doklist);
-*/
+
 $spes = new \joseffi\Bpjs\Pcare\Spesialis($pcare_conf);
 $speslist = $spes->getReferensiSpesialis();
 var_dump($speslist);
-
-
-/*
-$peserta = new \joseffi\Bpjs\Pcare\Peserta($pcare_conf);
-$data = $peserta->getPeserta('0001261832477');
-var_dump($data);
 */
+
+
+$peserta = new \joseffi\Bpjs\Pcare\Peserta($pcare_conf);
+//$data = $peserta->getPeserta('0001273375179');
+$data = $peserta->getPesertaJenisKartu('nik', '3201136208960001');
+var_dump($data);
+
 
 /*
 $poli = new \joseffi\Bpjs\Pcare\Poli($pcare_conf);
@@ -31,7 +32,8 @@ $sadar = new \joseffi\Bpjs\Pcare\Kesadaran($pcare_conf);
 $data = $sadar->getKesadaran();
 var_dump($data);
 */
-
+/*
 $provider = new \joseffi\Bpjs\Pcare\Provider($pcare_conf);
-$data = $provider->getProviderRayonasi(0, 100);
+$data = $provider->getProviderRayonisasi(0, 100);
 var_dump($data);
+*/
